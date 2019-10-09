@@ -24,7 +24,7 @@
       </div>
 
       <div class="row">
-      <div class="col-md-4">
+      <!---<div class="col-md-4">
           <div class="card">
             <div class="card-header">
               <h3>Kuota Cuti <?php echo date('Y')-1 ?></h3>
@@ -65,7 +65,7 @@
           </div>
         </div>
 
-      </div>
+      </div>-->
     </div><!-- /.container -->
   </section>
 <!-- /.content -->

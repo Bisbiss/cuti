@@ -1,9 +1,6 @@
-<?php
-$query = $this->db->query("SELECT * FROM karyawan Where level = 2")->result();
-?>
-<div class="content-wrapper">
+<div class="content">
   <section class="content">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col-12">
           <?php
@@ -20,7 +17,7 @@ $query = $this->db->query("SELECT * FROM karyawan Where level = 2")->result();
             ?>
           <br>
           <div class="callout callout-info">
-            <h5>Tambah Karyawan</h5>
+            <h5>Edit Karyawan</h5>
           </div>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -29,31 +26,34 @@ $query = $this->db->query("SELECT * FROM karyawan Where level = 2")->result();
           <div class="col-md">
             <div class="card card-success">
                 <div class="card-header">
-                    <h3 class="card-title">Formulir Tambah Karyawan</h3>
+                    <h3 class="card-title">Edit Tambah Karyawan</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form class="form-horizontal" action="<?php echo base_url('karyawan/tambah_su'); ?>" method="post">
+                <form class="form-horizontal" action="<?php echo base_url('karyawan/ubah_hrd'); ?>" method="post">
                     <div class="card-body">
+                    <?php
+                    foreach ($data as $data){
+                    ?>
                     <div class="form-group">
                         <label for="inputNPM" class="col-sm-4 control-label">Id Karyawan</label>
 
                         <div class="col-sm">
-                        <input type="text" class="form-control" id="inputNPM" name="id_karyawan" maxlength="5" placeholder="Masukan Id Karyawan" required>
+                        <input type="text" class="form-control" id="inputNPM" name="id_karyawan" maxlength="5" value="<?php echo $data->id_user ?>" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputName" class="col-sm-4 control-label">Nama Karyawan</label>
 
                         <div class="col-sm">
-                        <input type="text" class="form-control" id="inputName" name="nama" placeholder="Masukan Nama Karyawan" required>
+                        <input type="text" class="form-control" id="inputName" name="nama" value="<?php echo $data->nama ?>" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputpass" class="col-sm-4 control-label">Password</label>
 
                         <div class="col-sm">
-                        <input type="text" class="form-control" id="inputpass" name="password" placeholder="Masukan Password" required>
+                        <input type="text" class="form-control" id="inputpass" name="password" value="<?php echo $data->password ?>" required>
                         </div>
                     </div>
                     <!-- select -->
@@ -62,7 +62,7 @@ $query = $this->db->query("SELECT * FROM karyawan Where level = 2")->result();
                         <label for="inputNo" class="col-sm-4 control-label">Email</label>
 
                         <div class="col-sm">
-                        <input type="text" class="form-control" id="inputNo" name="email" placeholder="Masukan Email" required>
+                        <input type="text" class="form-control" id="inputNo" name="email" value="<?php echo $data->email ?>" required>
                         </div>
                     </div>
                     
@@ -70,41 +70,38 @@ $query = $this->db->query("SELECT * FROM karyawan Where level = 2")->result();
                         <label for="tgl_masuk" class="col-sm-4 control-label">Tanggal Masuk</label>
 
                         <div class="col-sm">
-                        <input type="date" class="form-control" id="tgl_masuk" name="tgl_masuk" placeholder="Tanggal Masuk" required>
+                        <input type="date" class="form-control" id="tgl_masuk" name="tgl_masuk" value="<?php echo $data->tanggal_masuk ?>" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="tgl_masuk" class="col-sm-4 control-label">Jabatan</label>
+                        <label for="kuota" class="col-sm-4 control-label">Kuota Cuti</label>
+
+                        <div class="col-sm">
+                        <input type="number" class="form-control" id="kuota" name="kuota_cuti" value="<?php echo $data->kuota_cuti ?>" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jabatan" class="col-sm-4 control-label">Jabatan</label>
 
                         <div class="col-sm">
                           <select class="form-control" id="jabatan" name="jabatan" required>
-                            <option value="1">Karyawan</option>
-                            <option value="2">Manager</option>
-                            <option value="3">HRD</option>
-                            <option value="4">Admin</option>
-                          </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="b" class="col-sm-4 control-label">Manager</label>
-
-                        <div class="col-sm">
-                          <select class="form-control" id="b" name="manager" required>
-                            <?php
-                            foreach ($query as $query){
-                            ?>
-                            <option value="<?php echo $query->nama ?>"><?php echo $query->nama ?></option>
-                            <?php } ?>
+                            <option value="1" <?php if ($data->level==1)echo 'selected'; ?>>Karyawan</option>
+                            <option value="2" <?php if ($data->level==2)echo 'selected'; ?>>Manager</option>
+                            <option value="3" <?php if ($data->level==3)echo 'selected'; ?>>HRD</option>
+                            <option value="4" <?php if ($data->level==4)echo 'selected'; ?>>Admin</option>
                           </select>
                         </div>
                     </div>
                     
                     </div>
+                    <?php 
+                    }
+                    ?>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                    <button type="submit" class="btn btn-success" style="float:right">Daftar</button>
+                    <button type="submit" class="btn btn-success" style="float:right">Edit</button>
                     </div>
                     <!-- /.card-footer -->
                 </form>

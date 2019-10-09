@@ -1,9 +1,9 @@
 <?php
 $query = $this->db->query("SELECT * FROM karyawan Where level = 2")->result();
 ?>
-<div class="content-wrapper">
+<div class="content">
   <section class="content">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col-12">
           <?php
@@ -33,7 +33,7 @@ $query = $this->db->query("SELECT * FROM karyawan Where level = 2")->result();
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form class="form-horizontal" action="<?php echo base_url('karyawan/tambah_su'); ?>" method="post">
+                <form class="form-horizontal" action="<?php echo base_url('karyawan/tambah_hrd'); ?>" method="post">
                     <div class="card-body">
                     <div class="form-group">
                         <label for="inputNPM" class="col-sm-4 control-label">Id Karyawan</label>
@@ -81,8 +81,6 @@ $query = $this->db->query("SELECT * FROM karyawan Where level = 2")->result();
                           <select class="form-control" id="jabatan" name="jabatan" required>
                             <option value="1">Karyawan</option>
                             <option value="2">Manager</option>
-                            <option value="3">HRD</option>
-                            <option value="4">Admin</option>
                           </select>
                         </div>
                     </div>

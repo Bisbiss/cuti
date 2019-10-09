@@ -19,6 +19,30 @@ class Hrd extends CI_Controller {
         $this->load->view('hrd/home',$data);
         $this->load->view('template/foot');
     }
+    function karyawan(){
+        $karyawan['karyawan']= $this->ModelKaryawan->get_hrd()->result();
+        $this->load->view('template/head');
+        $this->load->view('hrd/menu');
+        $this->load->view('hrd/karyawan',$karyawan);
+        $this->load->view('template/foot');
+    }
+    function tambahKaryawan(){
+        $this->load->view('template/head');
+        $this->load->view('hrd/menu');
+        $this->load->view('hrd/tambahkaryawan');
+        $this->load->view('template/foot');
+    }
+    function ubah($id_user){
+        $data['data'] = $this->ModelKaryawan->get_edit($id_user)->result();
+        $this->load->view('template/head');
+        $this->load->view('hrd/menu');
+        $this->load->view('hrd/ubahkaryawan', $data);
+        $this->load->view('template/foot');
+    }
+    function hapus($id_user){
+        $hapus = $this->ModelKaryawan->hapus($id_user);
+        redirect(base_url('admin/karyawan?delete=true'));
+    }
     function cuti(){
         $data['data'] = $this->ModelKaryawan->get_karyawan($this->session->userdata('nama'))->result();
         $this->load->view('template/head');

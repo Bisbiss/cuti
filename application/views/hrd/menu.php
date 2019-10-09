@@ -14,7 +14,7 @@
 <!-- Just an image -->
 <nav class="navbar bg-primary">
 	<div class="container">
-	  <a class="navbar-brand" href="<?php echo base_url('staff') ?>">
+	  <a class="navbar-brand" href="<?php echo base_url('hrd') ?>">
       <span>E-Cuti</span>
 	  </a>
 
@@ -23,7 +23,7 @@
 		    <a class="nav-link" href="<?php echo base_url('hrd/pengajuan') ?>">Pengajuan Cuti</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="<?php echo base_url('hrd/cuti') ?>">Ajukan Cuti</a>
+		    <a class="nav-link" href="<?php echo base_url('hrd/karyawan') ?>">Kelola Karyawan</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="<?php echo base_url('hrd/riwayat') ?>">Riwayat Cuti</a>

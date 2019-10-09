@@ -43,7 +43,7 @@
 
                         <div class="row">
                             <div class="col-sm">
-                                <input type="date" class="form-control" id="date" min="<?php echo date('Y-m-(d-7)') ?>" name="start_date" required>
+                                <input type="date" class="form-control" id="date" name="start_date" required>
                             </div>
                             <div class="col-sm">
                                 <input type="date" class="form-control" id="date2" name="end_date" onFocus="startCalculate()" onBlur="stopCalc();" required>
@@ -61,7 +61,7 @@
                         <label for="reason" class="col-sm-4 control-label">Reason</label>
 
                         <div class="col-sm">
-                        <textarea name="reason" id="reason" class="form-control" required></textarea>
+                        <textarea name="reason" id="reason" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>

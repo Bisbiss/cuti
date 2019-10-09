@@ -15,6 +15,7 @@ class Karyawan extends CI_Controller {
         $email = $_POST['email'];
         $tanggal_masuk = $_POST['tgl_masuk'];
         $jabatan = $_POST['jabatan'];
+        $employe = $_POST['manager'];
         $parseStart = explode("-",$tanggal_masuk);
         $parseEnd = explode("-",date('Y-m-d'));             
         $tahun = $parseEnd[0]-$parseStart[0];
@@ -33,7 +34,8 @@ class Karyawan extends CI_Controller {
             'level' => $jabatan,
             'kuota_cuti_sebelumnya' => $kuota_cuti,
             'kuota_cuti' => $kuota_cuti,
-            'kuota_cuti_setelahnya' => $kuota_cuti
+            'kuota_cuti_setelahnya' => $kuota_cuti,
+            'employe_manager' => $manager
         );
 
         $query = $this->ModelKaryawan->tambah($karyawan);
@@ -62,13 +64,36 @@ class Karyawan extends CI_Controller {
 
     }
 
-    function tambah_su(){
+    function ubah_hrd(){
         $id_user = $_POST['id_karyawan'];
         $nama = $_POST['nama'];
         $password = $_POST['password'];
         $email = $_POST['email'];
         $tanggal_masuk = $_POST['tgl_masuk'];
         $jabatan = $_POST['jabatan'];
+        $kuota_cuti = $_POST['kuota_cuti'];
+        $data = array(
+            'id_user' => $id_user,
+            'nama' => $nama,
+            'password' => $password,
+            'email' => $email,
+            'tanggal_masuk' => $tanggal_masuk,
+            'level' => $jabatan,
+            'kuota_cuti' => $kuota_cuti
+        );
+
+        $query = $this->ModelKaryawan->ubah($data,$id_user);
+        redirect(base_url('hrd/karyawan?update=true'));
+
+    }
+    function tambah_hrd(){
+        $id_user = $_POST['id_karyawan'];
+        $nama = $_POST['nama'];
+        $password = $_POST['password'];
+        $email = $_POST['email'];
+        $tanggal_masuk = $_POST['tgl_masuk'];
+        $jabatan = $_POST['jabatan'];
+        $employe = $_POST['manager'];
         $parseStart = explode("-",$tanggal_masuk);
         $parseEnd = explode("-",date('Y-m-d'));             
         $tahun = $parseEnd[0]-$parseStart[0];
@@ -77,6 +102,7 @@ class Karyawan extends CI_Controller {
         }else{
             $kuota_cuti = 12;
         } 
+
         $karyawan = array(
             'id_user' => $id_user,
             'nama' => $nama,
@@ -86,7 +112,42 @@ class Karyawan extends CI_Controller {
             'level' => $jabatan,
             'kuota_cuti_sebelumnya' => $kuota_cuti,
             'kuota_cuti' => $kuota_cuti,
-            'kuota_cuti_setelahnya' => $kuota_cuti
+            'kuota_cuti_setelahnya' => $kuota_cuti,
+            'employe_manager' => $manager
+        );
+
+        $query = $this->ModelKaryawan->tambah($karyawan);
+        redirect(base_url('Hrd/karyawan?insert=true'));
+    }
+
+    function tambah_su(){
+        $id_user = $_POST['id_karyawan'];
+        $nama = $_POST['nama'];
+        $password = $_POST['password'];
+        $email = $_POST['email'];
+        $tanggal_masuk = $_POST['tgl_masuk'];
+        $jabatan = $_POST['jabatan'];
+        $employe = $_POST['manager'];
+        $parseStart = explode("-",$tanggal_masuk);
+        $parseEnd = explode("-",date('Y-m-d'));             
+        $tahun = $parseEnd[0]-$parseStart[0];
+        if($tahun >= 10){
+            $kuota_cuti = 21;
+        }else{
+            $kuota_cuti = 12;
+        } 
+
+        $karyawan = array(
+            'id_user' => $id_user,
+            'nama' => $nama,
+            'password' => $password,
+            'email' => $email,
+            'tanggal_masuk' => $tanggal_masuk,
+            'level' => $jabatan,
+            'kuota_cuti_sebelumnya' => $kuota_cuti,
+            'kuota_cuti' => $kuota_cuti,
+            'kuota_cuti_setelahnya' => $kuota_cuti,
+            'employe_manager' => $manager
         );
 
         $query = $this->ModelKaryawan->tambah($karyawan);
@@ -253,10 +314,10 @@ class Karyawan extends CI_Controller {
         $change = $dummy->kuota_cuti-$total;
             if ($change < 0) {
                 $this->db->query("UPDATE karyawan SET kuota_cuti= 0,kuota_cuti_setelahnya= $dummy->kuota_cuti_setelahnya+$change WHERE nama='$nama' ");
-                redirect(base_url('Staff/riwayat')); 
+                redirect(base_url('Email/index/'.$nama)); 
             } else {
                 $this->db->query("UPDATE karyawan SET kuota_cuti= $dummy->kuota_cuti-$total WHERE nama='$nama' ");
-                redirect(base_url('Staff/riwayat'));   
+                redirect(base_url('Email/index/'.$nama));   
             }       
         }
     }
@@ -397,11 +458,11 @@ class Karyawan extends CI_Controller {
         $dummy = $this->db->query("SELECT kuota_cuti FROM karyawan WHERE nama = '$nama'")->row(); 
         $change = $dummy->kuota_cuti-$total;
             if ($change < 0) {
-                $this->db->query("UPDATE karyawan SET kuota_cuti= 0 , kuota_cuti_setelahnya= $dummy->kuota_cuti_setelahnya + $change WHERE nama='$nama' ");
-                redirect(base_url('manager/riwayat')); 
+                $this->db->query("UPDATE karyawan SET kuota_cuti= 0,kuota_cuti_setelahnya= $dummy->kuota_cuti_setelahnya+$change WHERE nama='$nama' ");
+                redirect(base_url('Email/index/'.$nama)); 
             } else {
                 $this->db->query("UPDATE karyawan SET kuota_cuti= $dummy->kuota_cuti-$total WHERE nama='$nama' ");
-                redirect(base_url('manager/riwayat'));   
+                redirect(base_url('Email/index/'.$nama));   
             }       
         }
     }
@@ -541,12 +602,12 @@ class Karyawan extends CI_Controller {
         $dummy = $this->db->query("SELECT kuota_cuti FROM karyawan WHERE nama = '$nama'")->row(); 
         $change = $dummy->kuota_cuti-$total;
             if ($change < 0) {
-                $this->db->query("UPDATE karyawan SET kuota_cuti= 0 , kuota_cuti_setelahnya= $dummy->kuota_cuti_setelahnya + $change WHERE nama='$nama' ");
-                redirect(base_url('manager/riwayat')); 
+                $this->db->query("UPDATE karyawan SET kuota_cuti= 0,kuota_cuti_setelahnya= $dummy->kuota_cuti_setelahnya+$change WHERE nama='$nama' ");
+                redirect(base_url('Email/index/'.$nama)); 
             } else {
                 $this->db->query("UPDATE karyawan SET kuota_cuti= $dummy->kuota_cuti-$total WHERE nama='$nama' ");
-                redirect(base_url('manager/riwayat'));   
-            }       
+                redirect(base_url('Email/index/'.$nama));   
+            }      
         }
     }
 }

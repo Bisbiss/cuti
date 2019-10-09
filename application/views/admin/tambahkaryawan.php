@@ -1,3 +1,6 @@
+<?php
+$query = $this->db->query("SELECT * FROM karyawan Where level = 2")->result();
+?>
 <div class="content-wrapper">
   <section class="content">
     <div class="container-fluid">
@@ -79,6 +82,20 @@
                             <option value="1">Karyawan</option>
                             <option value="2">Manager</option>
                             <option value="3">HRD</option>
+                          </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="b" class="col-sm-4 control-label">Manager</label>
+
+                        <div class="col-sm">
+                          <select class="form-control" id="b" name="manager" required>
+                            <?php
+                            foreach ($query as $query){
+                            ?>
+                            <option value="<?php echo $query->nama ?>"><?php echo $query->nama ?></option>
+                            <?php } ?>
                           </select>
                         </div>
                     </div>

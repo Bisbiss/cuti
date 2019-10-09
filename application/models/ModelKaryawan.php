@@ -6,6 +6,12 @@ class ModelKaryawan extends CI_Model{
         $this->db->where('level !=', 5);
         return $this->db->get('karyawan');
     }
+    public function get_hrd()
+    {
+        $this->db->where('level !=', 5);
+        $this->db->where('level !=', 4);
+        return $this->db->get('karyawan');
+    }
     public function get_all()
     {
         return $this->db->get('karyawan');

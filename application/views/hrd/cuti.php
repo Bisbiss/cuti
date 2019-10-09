@@ -60,7 +60,7 @@
                         <label for="reason" class="col-sm-4 control-label">Reason</label>
 
                         <div class="col-sm">
-                        <textarea name="reason" id="reason" class="form-control" required></textarea>
+                        <textarea name="reason" id="reason" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
