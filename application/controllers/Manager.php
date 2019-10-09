@@ -27,7 +27,8 @@ class Manager extends CI_Controller {
         $this->load->view('template/foot');
     }
     function pengajuan(){
-        $data['data'] = $this->ModelCuti->get_approve()->result();
+        $nama = $this->session->userdata('nama');
+        $data['data'] = $this->ModelCuti->get_approve($nama)->result();
         $this->load->view('template/head');
         $this->load->view('manager/menu');
         $this->load->view('manager/pengajuan',$data);

@@ -50,12 +50,12 @@
                                     <?php echo $data->reason ?>
                                 </td>
                                 <td>
-                                    <?php if ($data->status == 'c') {
-                                        echo "<span class='badge badge-info'>On Process</span>";
+                                    <?php if ($data->status == 'r') {
+                                        echo "<span class='badge badge-danger'>Disappove</span>";
                                     } else if ($data->status == 'v'){
                                         echo "<span class='badge badge-success'>Approve</span>";
                                     }else{
-                                        echo "<span class='badge badge-danger'>Disappove</span>";
+                                        echo "<span class='badge badge-info'>On Process</span>";
                                     }
                                     ?>
                                 </td>

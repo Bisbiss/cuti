@@ -122,6 +122,7 @@ class Karyawan extends CI_Controller {
         $start_date = $_POST['start_date'];
         $end_date = $_POST['end_date'];
         $reason = $_POST['reason'];
+        $employe = $_POST['employe'];
         $parseStart = explode("-",$start_date);
         if($parseStart[0]%4==0){
             $tahun = $parseStart[0]*366;
@@ -243,7 +244,7 @@ class Karyawan extends CI_Controller {
             'end_date' => $end_date,
             'total' => $total,
             'reason' => $reason,
-            'status' => 'c',
+            'status' => $employe,
             'rekam' => date('Y-m-d')
          );
 
@@ -262,6 +263,7 @@ class Karyawan extends CI_Controller {
 
     function cuti_manager(){
         $nama = $_POST['nama'];
+        $employe = $_POST['employe'];
         $leave_type = $_POST['leavetype'];
         $start_date = $_POST['start_date'];
         $end_date = $_POST['end_date'];
@@ -387,7 +389,7 @@ class Karyawan extends CI_Controller {
             'end_date' => $end_date,
             'total' => $total,
             'reason' => $reason,
-            'status' => 'm',
+            'status' => $employe,
             'rekam' => date('Y-m-d')
          );
 

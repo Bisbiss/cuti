@@ -26,6 +26,7 @@
                         <input type="text" class="form-control" id="Nama" name="nama" value="<?php echo $data->nama ?>" readonly>
                         </div>
                     </div>
+                    <input type="hidden" class="form-control" id="Nama" name="employe" value="<?php echo $data->employe_manager ?>" readonly>
                     <div class="form-group">
                         <label for="leavetype" class="col-sm-4 control-label">Leave type</label>
 
@@ -42,7 +43,7 @@
 
                         <div class="row">
                             <div class="col-sm">
-                                <input type="date" class="form-control" id="date" name="start_date" required>
+                                <input type="date" class="form-control" id="date" min="<?php echo date('Y-m-(d-7)') ?>" name="start_date" required>
                             </div>
                             <div class="col-sm">
                                 <input type="date" class="form-control" id="date2" name="end_date" onFocus="startCalculate()" onBlur="stopCalc();" required>

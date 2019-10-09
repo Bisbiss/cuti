@@ -14,8 +14,8 @@ class ModelCuti extends CI_Model{
         $this->db->order_by('id_cuti', 'DESC');
         return $this->db->get('cuti');
     }
-    public function get_approve(){
-        $this->db->where('status','c');
+    public function get_approve($nama){
+        $this->db->where('status',$nama);
         return $this->db->get('cuti');
     }
     public function get_approve_hrd(){

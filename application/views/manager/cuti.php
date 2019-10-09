@@ -26,6 +26,7 @@
                         <input type="text" class="form-control" id="Nama" name="nama" value="<?php echo $data->nama ?>" readonly>
                         </div>
                     </div>
+                    <input type="hidden" class="form-control" id="Nama" name="employe" value="<?php echo $data->employe_manager ?>" readonly>
                     <div class="form-group">
                         <label for="leavetype" class="col-sm-4 control-label">Leave type</label>
 
