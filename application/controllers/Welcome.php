@@ -48,16 +48,38 @@ class Welcome extends CI_Controller {
 				$ses = array(
 					'nama' => $level->nama,
 					'status' => 'manager',
-					'rule' => $level->employee_manager
+					'rule' => $level->employe_manager
 				);
+				$cek = $this->db->query("SELECT * FROM cuti Where nama = '$level->nama' ")->result();
+				foreach ($cek as $cek){
+					// echo date('d');
+					$parseStart = explode("-",$cek->rekam);
+					$cekin = $parseStart[2]+3;
+					// echo $level->nama;
+					if(date('Y') == $parseStart[0] && date('m') == $parseStart[1] && date('d') >= $cekin){
+						return $this->db->query("UPDATE cuti SET status = 'v' WHERE id_cuti = '$cek->id_cuti'");
+
+					}
+				}
 				$this->session->set_userdata($ses);
 				redirect('manager');
 			}else{
 				$ses = array(
 					'nama' => $level->nama,
 					'status' => 'karyawan',
-					'rule' => $level->employee_manager
+					'rule' => $level->employe_manager
 				);
+				$cek = $this->db->query("SELECT * FROM cuti Where nama = '$level->nama' ")->result();
+				foreach ($cek as $cek){
+					// echo date('d');
+					$parseStart = explode("-",$cek->rekam);
+					$cekin = $parseStart[2]+3;
+					// echo $level->nama;
+					if(date('Y') == $parseStart[0] && date('m') == $parseStart[1] && date('d') >= $cekin){
+						return $this->db->query("UPDATE cuti SET status = 'v' WHERE id_cuti = '$cek->id_cuti'");
+
+					}
+				}
 				$this->session->set_userdata($ses);
 				redirect('staff');
 			}
