@@ -33,4 +33,8 @@ class Staff extends CI_Controller {
         $this->load->view('staff/riwayat',$data);
         $this->load->view('template/foot');
     }
+    function hapus($id_cuti){
+        $hapus = $this->ModelCuti->hapus($id_cuti);
+        redirect(base_url('staff/riwayat'));
+    }
 }

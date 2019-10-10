@@ -305,7 +305,7 @@ class Karyawan extends CI_Controller {
             'end_date' => $end_date,
             'total' => $total,
             'reason' => $reason,
-            'status' => $employe,
+            'status' => 'c',
             'rekam' => date('Y-m-d')
          );
 
@@ -314,10 +314,10 @@ class Karyawan extends CI_Controller {
         $change = $dummy->kuota_cuti-$total;
             if ($change < 0) {
                 $this->db->query("UPDATE karyawan SET kuota_cuti= 0,kuota_cuti_setelahnya= $dummy->kuota_cuti_setelahnya+$change WHERE nama='$nama' ");
-                redirect(base_url('Email/index/'.$nama)); 
+                redirect(base_url('staff/riwayat')); 
             } else {
                 $this->db->query("UPDATE karyawan SET kuota_cuti= $dummy->kuota_cuti-$total WHERE nama='$nama' ");
-                redirect(base_url('Email/index/'.$nama));   
+                redirect(base_url('staff/riwayat'));   
             }       
         }
     }
@@ -459,6 +459,7 @@ class Karyawan extends CI_Controller {
         $change = $dummy->kuota_cuti-$total;
             if ($change < 0) {
                 $this->db->query("UPDATE karyawan SET kuota_cuti= 0,kuota_cuti_setelahnya= $dummy->kuota_cuti_setelahnya+$change WHERE nama='$nama' ");
+                
                 redirect(base_url('Email/index/'.$nama)); 
             } else {
                 $this->db->query("UPDATE karyawan SET kuota_cuti= $dummy->kuota_cuti-$total WHERE nama='$nama' ");

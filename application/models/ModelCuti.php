@@ -9,6 +9,16 @@ class ModelCuti extends CI_Model{
         $this->db->insert('cuti',$data);
     }
 
+    function get_cuti($id_cuti){
+        $this->db->where('id_cuti',$id_cuti);
+        return $this->db->get('cuti');
+    }
+
+    function hapus($id_cuti){
+        $this->db->where('id_cuti',$id_cuti);
+        $this->db->delete('karyawan');
+    }
+
     public function get_where($where){
         $this->db->where('nama',$where);
         $this->db->order_by('id_cuti', 'DESC');

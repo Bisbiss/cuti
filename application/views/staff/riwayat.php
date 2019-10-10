@@ -1,5 +1,5 @@
 <section class="content">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-md">
         <br>
@@ -13,12 +13,13 @@
                         <thead>
                             <th width="5%" class="text-center">No</th>
                             <th width="15%" class="text-center">Name</th>
-                            <th width="15%" class="text-center">Leave Type </th>
+                            <th width="10%" class="text-center">Leave Type </th>
                             <th width="10%" class="text-center">Start</th>
                             <th width="10%" class="text-center">End</th>
-                            <th width="13%" class="text-center">Total Day</th>
-                            <th width="22%" class="text-center">Reason</th>
+                            <th width="7%" class="text-center">Total Day</th>
+                            <th width="18%" class="text-center">Reason</th>
                             <th width="10%" class="text-center">Status</th>
+                            <th width="15%" class="text-center">Action</th>
                         </thead>
                     
                         <tbody>
@@ -54,10 +55,20 @@
                                         echo "<span class='badge badge-danger'>Disappove</span>";
                                     } else if ($data->status == 'v'){
                                         echo "<span class='badge badge-success'>Approve</span>";
+                                    }else if ($data->status == 'c'){
+                                        echo "<span class='badge badge-success'>Checking</span>";
                                     }else{
                                         echo "<span class='badge badge-info'>On Process</span>";
                                     }
                                     ?>
+                                </td>
+                                <td>
+                                    <?php if ($data->status == 'c'){?>
+                                        <a href="<?php echo base_url('email/index/'.$data->id_cuti) ?>"><i class="fa fa-edit"></i> Ajukan</a> |
+                                        <a href="hapus/<?php echo $data->id_cuti ?>" style="color:red">Hapus <i class="fa fa-trash"></i></a>
+                                    <?php }else {
+                                        echo "<center>--------</center>";
+                                    } ?>
                                 </td>
                             </tr>
                             <?php
