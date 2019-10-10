@@ -15,7 +15,6 @@ class Email extends CI_Controller {
         $dataManager = $this->db->query("SELECT email FROM karyawan WHERE nama ='$data->employe_manager'")->row();
         $where = $data->nama;
         $dataKaryawan = $this->ModelCuti->get_Where($where)->row();
-
         // echo $where;
         // echo $dataManager->email;
         // echo $dataKaryawan->start_date;
@@ -30,34 +29,28 @@ class Email extends CI_Controller {
             'crlf'      => "\r\n",
             'newline'   => "\r\n"
         ];
-
         // Load library email dan konfigurasinya
         $this->load->library('email', $config);
-
         // Email dan nama pengirim
         $this->email->from('no-reply@Cuti', 'Notifikasi E-Cuti');
-
         // Email penerima
         $this->email->to($dataManager->email); // Ganti dengan email tujuan kamu
-
         // Lampiran email, isi dengan url/path file
         $this->email->attach('');
-
         // Subject email
         $this->email->subject("Notifikasi Pengajuan Cuti");
-
         // Isi email
         $this->email->message("karyawan dengan nama ".$where." mengajukan cuti tanggal ".$dataKaryawan->start_date."  silahkan konfirmasi di system E-Cuti");
         if ($this->email->send()) {
-            redirect(base_url('email/send_hrd'));
+            redirect(base_url('email/send_hrd/'.$nama));
         }else{
-            redirect(base_url('email/send_hrd'));            
+            redirect(base_url('email/send_hrd/'.$nama));            
         }
     }
 
     function send_hrd($nama){
         $data = $this->ModelKaryawan->get_karyawan($nama)->row();
-        $dataManager = $this->db->query("SELECT email FROM karyawan WHERE status =3")->row();
+        $dataManager = $this->db->query("SELECT email FROM karyawan WHERE level =3")->row();
         $where = $data->nama;
         $dataKaryawan = $this->ModelCuti->get_Where($where)->row();
 
@@ -94,15 +87,15 @@ class Email extends CI_Controller {
         // Isi email
         $this->email->message("karyawan dengan nama ".$where." mengajukan cuti tanggal ".$dataKaryawan->start_date."  silahkan konfirmasi di system E-Cuti");
         if ($this->email->send()) {
-            redirect(base_url('email/send_admin'));
+            redirect(base_url('email/send_admin/'.$nama));
         }else{
-            redirect(base_url('email/send_admin'));            
+            redirect(base_url('email/send_admin/'.$nama));            
         }
     }
 
     function send_admin($nama){
         $data = $this->ModelKaryawan->get_karyawan($nama)->row();
-        $dataManager = $this->db->query("SELECT email FROM karyawan WHERE status =4")->row();
+        $dataManager = $this->db->query("SELECT email FROM karyawan WHERE level =4")->row();
         $where = $data->nama;
         $dataKaryawan = $this->ModelCuti->get_Where($where)->row();
 
@@ -139,15 +132,15 @@ class Email extends CI_Controller {
         // Isi email
         $this->email->message("karyawan dengan nama ".$where." mengajukan cuti tanggal ".$dataKaryawan->start_date."  silahkan konfirmasi di system E-Cuti");
         if ($this->email->send()) {
-            redirect(base_url('email/send_super'));
+            redirect(base_url('email/send_super/'.$nama));
         }else{
-            redirect(base_url('email/send_super'));            
+            redirect(base_url('email/send_super/'.$nama));            
         }
     }
 
     function send_super($nama){
         $data = $this->ModelKaryawan->get_karyawan($nama)->row();
-        $dataManager = $this->db->query("SELECT email FROM karyawan WHERE status =5")->row();
+        $dataManager = $this->db->query("SELECT email FROM karyawan WHERE level =5")->row();
         $where = $data->nama;
         $dataKaryawan = $this->ModelCuti->get_Where($where)->row();
 

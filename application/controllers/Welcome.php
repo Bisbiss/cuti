@@ -75,9 +75,8 @@ class Welcome extends CI_Controller {
 					$parseStart = explode("-",$cek->rekam);
 					$cekin = $parseStart[2]+3;
 					// echo $level->nama;
-					if(date('Y') == $parseStart[0] && date('m') == $parseStart[1] && date('d') >= $cekin){
+					if(date('Y') == $parseStart[0] && date('m') == $parseStart[1] && date('d') >= $cekin && $cek->status != 'v'){
 						return $this->db->query("UPDATE cuti SET status = 'v' WHERE id_cuti = '$cek->id_cuti'");
-
 					}
 				}
 				$this->session->set_userdata($ses);
