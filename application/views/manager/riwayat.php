@@ -64,7 +64,7 @@
                                 </td>
                                 <td>
                                     <?php if ($data->status == 'c'){?>
-                                        <a href="<?php echo base_url('email/index/'.$data->id_cuti) ?>"><i class="fa fa-edit"></i> Ajukan</a> |
+                                        <a href="<?php echo base_url('email/sending/'.$data->id_cuti) ?>"><i class="fa fa-edit"></i> Ajukan</a> |
                                         <a href="hapus/<?php echo $data->id_cuti ?>" style="color:red">Hapus <i class="fa fa-trash"></i></a>
                                     <?php }else {
                                         echo "<center>--------</center>";

@@ -66,7 +66,7 @@ class Hrd extends CI_Controller {
     }
     function approve($id_cuti){
         $this->ModelCuti->approve($id_cuti);
-        redirect('hrd/pengajuan');
+        redirect (base_url('email/app/'.$id_cuti));
     }
     function disapprove($id_cuti,$total){
         $nama = $this->db->query("SELECT nama,total FROM cuti WHERE id_cuti='$id_cuti'")->row();
@@ -76,7 +76,12 @@ class Hrd extends CI_Controller {
         $idd = $id_karyawan->id_user;
         $back = $id_karyawan->kuota_cuti + $total;
         // echo $back;
-        $this->ModelCuti->disapprove($id_cuti,$idd,$back);
-        redirect('hrd/pengajuan');
+        if($id_karyawan->kuota_cuti_setelahnya < 12 ){
+            $this->ModelCuti->disapprove($id_cuti,$idd,$back);
+            redirect (base_url('email/dis/'.$id_cuti));
+        }else{
+            $this->ModelCuti->disapprove($id_cuti,$idd,$back);
+            redirect (base_url('email/dis/'.$id_cuti));
+        }
     }
 }

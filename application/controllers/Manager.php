@@ -43,7 +43,7 @@ class Manager extends CI_Controller {
     }
     function approve($id_cuti){
         $this->ModelCuti->approve($id_cuti);
-        redirect('manager/pengajuan');
+        redirect (base_url('email/approve/'.$id_cuti));
     }
     function disapprove($id_cuti,$total){
         $nama = $this->db->query("SELECT nama,total FROM cuti WHERE id_cuti='$id_cuti'")->row();
@@ -55,10 +55,10 @@ class Manager extends CI_Controller {
         // echo $back;
         if($id_karyawan->kuota_cuti_setelahnya < 12 ){
             $this->ModelCuti->disapprove($id_cuti,$idd,$back);
-            redirect('manager/pengajuan');
+            redirect (base_url('email/diss/'.$id_cuti));
         }else{
             $this->ModelCuti->disapprove($id_cuti,$idd,$back);
-            redirect('manager/pengajuan');
+            redirect (base_url('email/diss/'.$id_cuti));
         }
     }
 } 
