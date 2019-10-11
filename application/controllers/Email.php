@@ -26,8 +26,8 @@ class Email extends CI_Controller {
             'charset'   => 'utf-8',
             'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.gmail.com',
-            'smtp_user' => 'arsip.media2@gmail.com',    // Ganti dengan email gmail kamu
-            'smtp_pass' => 'projectperpus',      // Password gmail kamu
+            'smtp_user' => 'bisbiss.2019@gmail.com',    // Ganti dengan email gmail kamu
+            'smtp_pass' => 'r3s0lus1b4ru',      // Password gmail kamu
             'smtp_port' => 465,
             'crlf'      => "\r\n",
             'newline'   => "\r\n"
@@ -38,8 +38,7 @@ class Email extends CI_Controller {
         $this->email->from('no-reply@Cuti', 'Notifikasi E-Cuti');
         // Email penerima
         $this->email->to($dataManager->email); // Ganti dengan email tujuan kamu
-        // Lampiran email, isi dengan url/path file
-        $this->email->attach('');
+        
         // Subject email
         $this->email->subject("Notifikasi Pengajuan Cuti");
         // Isi email
@@ -49,9 +48,9 @@ class Email extends CI_Controller {
             $this->db->query("UPDATE cuti SET status='$employe' WHERE id_cuti='$id_cuti'");
             redirect(base_url('email/send_hrd/'.$nama));
         }else{
-            // echo "Emaill Gagal Terkirim";
-            $this->db->query("UPDATE cuti SET status='$employe' WHERE id_cuti='$id_cuti'");
-            redirect(base_url('email/send_hrd/'.$nama));            
+            show_error($this->email->print_debugger());
+            // $this->db->query("UPDATE cuti SET status='$employe' WHERE id_cuti='$id_cuti'");
+            // redirect(base_url('email/send_hrd/'.$nama));            
         }
     }
 
@@ -68,8 +67,8 @@ class Email extends CI_Controller {
             'charset'   => 'utf-8',
             'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.gmail.com',
-            'smtp_user' => 'arsip.media2@gmail.com',    // Ganti dengan email gmail kamu
-            'smtp_pass' => 'projectperpus',      // Password gmail kamu
+            'smtp_user' => 'bisbiss.2019@gmail.com',    // Ganti dengan email gmail kamu
+            'smtp_pass' => 'r3s0lus1b4ru',      // Password gmail kamu
             'smtp_port' => 465,
             'crlf'      => "\r\n",
             'newline'   => "\r\n"
@@ -107,8 +106,8 @@ class Email extends CI_Controller {
             'charset'   => 'utf-8',
             'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.gmail.com',
-            'smtp_user' => 'arsip.media2@gmail.com',    // Ganti dengan email gmail kamu
-            'smtp_pass' => 'projectperpus',      // Password gmail kamu
+            'smtp_user' => 'bisbiss.2019@gmail.com',    // Ganti dengan email gmail kamu
+            'smtp_pass' => 'r3s0lus1b4ru',      // Password gmail kamu
             'smtp_port' => 465,
             'crlf'      => "\r\n",
             'newline'   => "\r\n"
@@ -135,7 +134,7 @@ class Email extends CI_Controller {
     }
     function send_super($nama){
         $data = $this->ModelKaryawan->get_karyawan($nama)->row();
-        $dataManager = $this->db->query("SELECT email FROM karyawan WHERE level =4")->row();
+        $dataManager = $this->db->query("SELECT email FROM karyawan WHERE level =5")->row();
         $where = $data->nama;
         $dataKaryawan = $this->ModelCuti->get_Where($where)->row();
         // echo $where;
@@ -146,8 +145,8 @@ class Email extends CI_Controller {
             'charset'   => 'utf-8',
             'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.gmail.com',
-            'smtp_user' => 'arsip.media2@gmail.com',    // Ganti dengan email gmail kamu
-            'smtp_pass' => 'projectperpus',      // Password gmail kamu
+            'smtp_user' => 'bisbiss.2019@gmail.com',    // Ganti dengan email gmail kamu
+            'smtp_pass' => 'r3s0lus1b4ru',      // Password gmail kamu
             'smtp_port' => 465,
             'crlf'      => "\r\n",
             'newline'   => "\r\n"
