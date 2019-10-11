@@ -61,7 +61,7 @@
                         <label for="reason" class="col-sm-4 control-label">Reason</label>
 
                         <div class="col-sm">
-                        <textarea name="reason" id="reason" class="form-control" required></textarea>
+                        <textarea name="reason" id="reason" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                 <h3>Kuota Cuti</h3>
                 </div>
                 <div class="card-body">
-                <table>
+                    <table>
                         <tr>
                             <td><h3>Kuota <?php echo date('Y')-1 ?> : </h3></td>
                             <td><h3><?php echo $data->kuota_cuti_sebelumnya ?></h3></td>
