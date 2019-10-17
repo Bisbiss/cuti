@@ -45,6 +45,13 @@ class Manager extends CI_Controller {
         $this->ModelCuti->approve($id_cuti);
         redirect (base_url('email/approve/'.$id_cuti));
     }
+    function cuti_urgent(){
+        $data['data'] = $this->ModelKaryawan->get_karyawan($this->session->userdata('nama'))->result();
+        $this->load->view('manager/head');
+        $this->load->view('manager/menu');
+        $this->load->view('manager/cuti_urgent',$data);
+        $this->load->view('template/foot');
+    }
     function disapprove($id_cuti,$total){
         $nama = $this->db->query("SELECT nama,total FROM cuti WHERE id_cuti='$id_cuti'")->row();
         $namaa = $nama->nama;
