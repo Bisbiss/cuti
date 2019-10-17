@@ -16,7 +16,7 @@ class ModelCuti extends CI_Model{
 
     function hapus($id_cuti){
         $this->db->where('id_cuti',$id_cuti);
-        $this->db->delete('karyawan');
+        $this->db->delete('cuti');
     }
 
     public function get_where($where){

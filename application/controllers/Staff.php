@@ -34,7 +34,12 @@ class Staff extends CI_Controller {
         $this->load->view('template/foot');
     }
     function hapus($id_cuti){
+        $cek = $this->db->query("SELECT total,nama FROM cuti WHERE id_cuti='$id_cuti'")->row();
+        $total = $this->db->query("SELECT * FROM karyawan WHERE nama = '$cek->nama'")->row();
         $hapus = $this->ModelCuti->hapus($id_cuti);
+        // var_dump ($total);
+        // echo $total->kuota_cuti+$cek->total;
+        $ubah = $this->db->query("UPDATE karyawan SET kuota_cuti = '$total->kuota_cuti' + '$cek->total' WHERE nama = '$cek->nama'");
         redirect(base_url('staff/riwayat'));
     }
     function cuti_urgent(){
