@@ -43,15 +43,10 @@
 
                         <div class="row">
                             <div class="col-sm">
-                            <?php
-                            $now = date('Y-m-d');
-                            $parseStart = explode("-",$now);
-                            $hari = $parseStart[2]+7;
-                            ?>
-                                <input type="date" class="form-control" id="date" name="start_date" min="<?php echo $parseStart[0].'-'.$parseStart[1].'-'.$hari; ?>" required>
+                                <input type="date" class="form-control" id="date" name="start_date" min="<?php echo date('Y-m-d') ?>" required>
                             </div>
                             <div class="col-sm">
-                                <input type="date" class="form-control" id="date2" name="end_date" min="<?php echo $parseStart[0].'-'.$parseStart[1].'-'.$hari; ?>" required>
+                                <input type="date" class="form-control" id="date2" name="end_date" min="<?php echo date('Y-m-d') ?>" required>
                             </div>
                         </div>
                     </div>

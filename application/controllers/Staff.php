@@ -37,4 +37,11 @@ class Staff extends CI_Controller {
         $hapus = $this->ModelCuti->hapus($id_cuti);
         redirect(base_url('staff/riwayat'));
     }
+    function cuti_urgent(){
+        $data['data'] = $this->ModelKaryawan->get_karyawan($this->session->userdata('nama'))->result();
+        $this->load->view('staff/head');
+        $this->load->view('staff/menu');
+        $this->load->view('staff/cuti_urgent',$data);
+        $this->load->view('template/foot');
+    }
 }
