@@ -1,6 +1,6 @@
   <footer class="footer">
     <hr>
-    <strong><center>Copyright &copy; 2019 <a href="http://instagram.com/bisbiss_">Bisbiss Project</a>.</strong>
+    <strong><center>Copyright &copy; 2019 <a href="http://bisbiss.github.io">Bisbiss Project</a>.</strong>
     All rights reserved.</center>
   </footer>
 
