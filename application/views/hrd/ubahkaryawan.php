@@ -73,12 +73,26 @@
                         <input type="date" class="form-control" id="tgl_masuk" name="tgl_masuk" value="<?php echo $data->tanggal_masuk ?>" required>
                         </div>
                     </div>
+   
+                    <div class="form-group">
+                        <label for="kuota" class="col-sm-4 control-label">Kuota Cuti <?php echo date('Y')-1 ?></label>
+                        <div class="col-sm">
+                        <input type="number" class="form-control" id="kuota" name="kuota_cuti_sebelumnya" value="<?php echo $data->kuota_cuti_sebelumnya ?>" required>
+                        </div>
+                    </div>
 
                     <div class="form-group">
-                        <label for="kuota" class="col-sm-4 control-label">Kuota Cuti</label>
+                        <label for="kuota" class="col-sm-4 control-label">Kuota Cuti <?php echo date('Y')?></label>
 
                         <div class="col-sm">
                         <input type="number" class="form-control" id="kuota" name="kuota_cuti" value="<?php echo $data->kuota_cuti ?>" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kuota" class="col-sm-4 control-label">Kuota Cuti <?php echo date('Y')+1 ?></label>
+                        <div class="col-sm">
+                        <input type="number" class="form-control" id="kuota" name="kuota_cuti_setelahnya" value="<?php echo $data->kuota_cuti_setelahnya ?>" required>
                         </div>
                     </div>
 

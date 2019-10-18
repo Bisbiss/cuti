@@ -48,7 +48,9 @@ class Karyawan extends CI_Controller {
         $email = $_POST['email'];
         $tanggal_masuk = $_POST['tgl_masuk'];
         $jabatan = $_POST['jabatan'];
+        $kuota_cuti_sebelumnya = $_POST['kuota_cuti_sebelumnya'];
         $kuota_cuti = $_POST['kuota_cuti'];
+        $kuota_cuti_setelahnya = $_POST['kuota_cuti_setelahnya'];
         $data = array(
             'id_user' => $id_user,
             'nama' => $nama,
@@ -56,7 +58,9 @@ class Karyawan extends CI_Controller {
             'email' => $email,
             'tanggal_masuk' => $tanggal_masuk,
             'level' => $jabatan,
-            'kuota_cuti' => $kuota_cuti
+            'kuota_cuti_sebelumnya' => $kuota_cuti_sebelumnya,
+            'kuota_cuti' => $kuota_cuti,
+            'kuota_cuti_setelahnya' => $kuota_cuti_setelahnya
         );
 
         $query = $this->ModelKaryawan->ubah($data,$id_user);
@@ -71,7 +75,9 @@ class Karyawan extends CI_Controller {
         $email = $_POST['email'];
         $tanggal_masuk = $_POST['tgl_masuk'];
         $jabatan = $_POST['jabatan'];
+        $kuota_cuti_sebelumnya = $_POST['kuota_cuti_sebelumnya'];
         $kuota_cuti = $_POST['kuota_cuti'];
+        $kuota_cuti_setelahnya = $_POST['kuota_cuti_setelahnya'];
         $data = array(
             'id_user' => $id_user,
             'nama' => $nama,
@@ -79,13 +85,16 @@ class Karyawan extends CI_Controller {
             'email' => $email,
             'tanggal_masuk' => $tanggal_masuk,
             'level' => $jabatan,
-            'kuota_cuti' => $kuota_cuti
+            'kuota_cuti_sebelumnya' => $kuota_cuti_sebelumnya,
+            'kuota_cuti' => $kuota_cuti,
+            'kuota_cuti_setelahnya' => $kuota_cuti_setelahnya
         );
 
         $query = $this->ModelKaryawan->ubah($data,$id_user);
         redirect(base_url('hrd/karyawan?update=true'));
 
     }
+
     function tambah_hrd(){
         $id_user = $_POST['id_karyawan'];
         $nama = $_POST['nama'];
@@ -161,7 +170,9 @@ class Karyawan extends CI_Controller {
         $email = $_POST['email'];
         $tanggal_masuk = $_POST['tgl_masuk'];
         $jabatan = $_POST['jabatan'];
+        $kuota_cuti_sebelumnya = $_POST['kuota_cuti_sebelumnya'];
         $kuota_cuti = $_POST['kuota_cuti'];
+        $kuota_cuti_setelahnya = $_POST['kuota_cuti_setelahnya'];
         $data = array(
             'id_user' => $id_user,
             'nama' => $nama,
@@ -169,7 +180,9 @@ class Karyawan extends CI_Controller {
             'email' => $email,
             'tanggal_masuk' => $tanggal_masuk,
             'level' => $jabatan,
-            'kuota_cuti' => $kuota_cuti
+            'kuota_cuti_sebelumnya' => $kuota_cuti_sebelumnya,
+            'kuota_cuti' => $kuota_cuti,
+            'kuota_cuti_setelahnya' => $kuota_cuti_setelahnya
         );
 
         $query = $this->ModelKaryawan->ubah($data,$id_user);
