@@ -64,4 +64,8 @@ class Admin extends CI_Controller {
         $this->ModelCuti->disapprove($id_cuti,$idd,$back);
         redirect('admin/pengajuan');
     }
+    function cetak(){
+        $data['data'] = $this->ModelKaryawan->get()->result();
+        $this->load->view('admin/cetak', $data);
+    }
 }

@@ -26,6 +26,10 @@ class Hrd extends CI_Controller {
         $this->load->view('hrd/karyawan',$karyawan);
         $this->load->view('template/foot');
     }
+    function cetak(){
+        $data['data'] = $this->ModelKaryawan->get_hrd()->result();
+        $this->load->view('hrd/cetak', $data);
+    }
     function tambahKaryawan(){
         $this->load->view('template/head');
         $this->load->view('hrd/menu');

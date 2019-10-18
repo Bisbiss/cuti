@@ -25,6 +25,10 @@ class Superadmin extends CI_Controller {
         $this->load->view('superadmin/karyawan',$karyawan);
         $this->load->view('template/foot');
     }
+    function cetak(){
+        $data['data'] = $this->ModelKaryawan->get_all()->result();
+        $this->load->view('superadmin/cetak', $data);
+    }
     function tambahKaryawan(){
         $this->load->view('template/head');
         $this->load->view('superadmin/menu');

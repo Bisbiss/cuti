@@ -48,8 +48,13 @@
                     <div class="card-header">
                         <h3 class="card-title" style="float:left">Kelola Karyawan</h3>
                         <h3 class="card-title" style="float:right">
+                        <a href="<?php echo base_url('admin/cetak') ?>">   
+                            <i class="nav-icon fa fa-download"> Export Data</i>
+                        </a>
+                        </h3>
+                        <h3 class="card-title" style="float:right">
                         <a href="<?php echo base_url('admin/tambahKaryawan') ?>">   
-                            <i class="nav-icon fa fa-plus-square"> Tambah Karayawan</i>
+                            <i class="nav-icon fa fa-plus-square"> Tambah Karayawan |</i>
                         </a>
                         </h3>
                     </div>
